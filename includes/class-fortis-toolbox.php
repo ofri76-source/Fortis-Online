@@ -19,6 +19,70 @@ class Fortis_Toolbox_Plugin {
     private static $instance = null;
 
     /**
+     * Section definitions used to build per-topic shortcode pages.
+     *
+     * @var array
+     */
+    private $sections = array(
+        'general_settings' => array(
+            'title'       => 'General settings',
+            'description' => 'Core device identity, hostname, and model selection.',
+        ),
+        'local_interface'  => array(
+            'title'       => 'Local interface',
+            'description' => 'LAN interface addressing and DHCP scope.',
+        ),
+        'wan_interfaces'   => array(
+            'title'       => 'WAN interfaces',
+            'description' => 'WAN links, modes, and credentials.',
+        ),
+        'sd_wan'           => array(
+            'title'       => 'SD-WAN',
+            'description' => 'SD-WAN members and performance rules.',
+        ),
+        'address'          => array(
+            'title'       => 'Address',
+            'description' => 'Address objects and CIDR definitions.',
+        ),
+        'address_group'    => array(
+            'title'       => 'Address group',
+            'description' => 'Grouping of address objects per usage.',
+        ),
+        'logs'             => array(
+            'title'       => 'Logs',
+            'description' => 'Log settings, forwarding, and retention.',
+        ),
+        'feature_vis'      => array(
+            'title'       => 'Feature visibility',
+            'description' => 'Feature toggles and visibility controls.',
+        ),
+        'admin'            => array(
+            'title'       => 'Admin',
+            'description' => 'Administrators, profiles, and MFA.',
+        ),
+        'daily_backup'     => array(
+            'title'       => 'Daily backup',
+            'description' => 'Backup destinations and scheduling.',
+        ),
+        'vpn_settings'     => array(
+            'title'       => 'VPN settings',
+            'description' => 'VPN portals, subnets, and portal access.',
+        ),
+        'firewall_policy'  => array(
+            'title'       => 'Firewall policy',
+            'description' => 'Traffic policies, sources, destinations, and services.',
+        ),
+        'services_color'   => array(
+            'title'       => 'Services color',
+            'description' => 'Service objects with color coding.',
+        ),
+        'ldap'             => array(
+            'title'       => 'LDAP',
+            'description' => 'LDAP servers, bind credentials, and test hooks.',
+        ),
+    );
+
+    /**
      * Bootstrap the plugin singleton.
      */
     public static function bootstrap() {
@@ -36,6 +100,9 @@ class Fortis_Toolbox_Plugin {
         add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
         add_action( 'admin_post_fortis_toolbox_generate', array( $this, 'handle_generate_request' ) );
         add_shortcode( 'fortis_toolbox', array( $this, 'render_frontend_shortcode' ) );
+        foreach ( array_keys( $this->sections ) as $section_slug ) {
+            add_shortcode( 'fortis_toolbox_' . $section_slug, array( $this, 'render_section_shortcode' ) );
+        }
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_frontend_assets' ) );
     }
@@ -136,6 +203,35 @@ class Fortis_Toolbox_Plugin {
     }
 
     /**
+     * Render a section-specific shortcode view.
+     *
+     * @param array       $atts    Shortcode attributes.
+     * @param string|null $content Content (unused).
+     * @param string      $tag     Shortcode tag name.
+     *
+     * @return string
+     */
+    public function render_section_shortcode( $atts, $content = null, $tag = '' ) {
+        $slug      = str_replace( 'fortis_toolbox_', '', (string) $tag );
+        $sections  = $this->get_sections();
+        $template  = FORTIS_TOOLBOX_PATH . 'views/sections/' . $slug . '.php';
+
+        if ( ! isset( $sections[ $slug ] ) || ! file_exists( $template ) ) {
+            return '';
+        }
+
+        $this->enqueue_assets();
+
+        $section_links  = $this->get_section_links();
+        $current_slug   = $slug;
+        $current_config = $sections[ $slug ];
+
+        ob_start();
+        require $template;
+        return ob_get_clean();
+    }
+
+    /**
      * Handle form submission and generate a very basic config skeleton.
      */
     public function handle_generate_request() {
@@ -215,5 +311,38 @@ class Fortis_Toolbox_Plugin {
             'services_color'   => 'Services Color',
             'ldap'             => 'LDAP',
         );
+    }
+
+    /**
+     * Return the list of section definitions.
+     *
+     * @return array
+     */
+    public function get_sections() {
+        return $this->sections;
+    }
+
+    /**
+     * Build nav links for the section pages.
+     *
+     * @return array
+     */
+    public function get_section_links() {
+        $links = array();
+
+        foreach ( $this->sections as $slug => $section ) {
+            $links[ $slug ] = array(
+                'slug' => $slug,
+                'title' => $section['title'],
+                'url'  => apply_filters( 'fortis_toolbox_section_url', '#', $slug, $section ),
+            );
+        }
+
+        /**
+         * Filter the nav links used on section pages.
+         *
+         * @param array $links Array of section links.
+         */
+        return apply_filters( 'fortis_toolbox_section_links', $links );
     }
 }
