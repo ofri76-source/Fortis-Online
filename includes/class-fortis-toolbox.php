@@ -295,11 +295,26 @@ class Fortis_Toolbox_Plugin {
     public function get_section_links() {
         $links = array();
 
+        $default_urls = array(
+            'new_forti'  => 'https://kb.macompo.co.il/?page_id=14249',
+            'virtual_ip' => 'https://kb.macompo.co.il/?page_id=14254',
+            'address'    => 'https://kb.macompo.co.il/?page_id=14255',
+            'security'   => 'https://kb.macompo.co.il/?page_id=14256',
+            'alerts'     => 'https://kb.macompo.co.il/?page_id=14264',
+            'import'     => 'https://kb.macompo.co.il/?page_id=14252',
+            'settings'   => 'https://kb.macompo.co.il/?page_id=14257',
+        );
+
         foreach ( $this->sections as $slug => $section ) {
             $links[ $slug ] = array(
-                'slug' => $slug,
+                'slug'  => $slug,
                 'title' => $section['title'],
-                'url'  => apply_filters( 'fortis_toolbox_section_url', '#', $slug, $section ),
+                'url'   => apply_filters(
+                    'fortis_toolbox_section_url',
+                    isset( $default_urls[ $slug ] ) ? $default_urls[ $slug ] : '#',
+                    $slug,
+                    $section
+                ),
             );
         }
 

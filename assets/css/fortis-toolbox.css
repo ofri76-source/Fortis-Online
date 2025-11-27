@@ -164,6 +164,57 @@
     margin-bottom: 10px;
 }
 
+.kb-fortis-table-wrapper {
+    overflow-x: auto;
+}
+
+.kb-fortis-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 780px;
+}
+
+.kb-fortis-table th,
+.kb-fortis-table td {
+    border: 1px solid #e5e7eb;
+    padding: 8px 10px;
+    text-align: left;
+    background: #ffffff;
+}
+
+.kb-fortis-table th {
+    background: #f3f4f6;
+    font-weight: 600;
+}
+
+.kb-fortis-table input[type="text"],
+.kb-fortis-table input[type="number"],
+.kb-fortis-table select {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    box-sizing: border-box;
+}
+
+.kb-fortis-table .kb-fortis-table-actions {
+    display: inline-flex;
+    gap: 6px;
+}
+
+.kb-fortis-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    background: #f9fafb;
+    cursor: pointer;
+}
+
 .kb-fortis-cli-card textarea {
     width: 100%;
     box-sizing: border-box;

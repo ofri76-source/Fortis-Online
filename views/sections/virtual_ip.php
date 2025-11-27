@@ -14,39 +14,71 @@
         <h2><?php echo esc_html( $current_config['title'] ); ?></h2>
         <p><?php echo esc_html( $current_config['description'] ); ?></p>
 
-        <div class="kb-fortis-grid">
-            <div class="kb-fortis-field">
-                <label for="fortis_vip_name"><?php esc_html_e( 'VIP name', 'fortis-toolbox' ); ?></label>
-                <input type="text" id="fortis_vip_name" name="fortis_vip_name" value="vip_frontend" />
-            </div>
-            <div class="kb-fortis-field">
-                <label for="fortis_vip_interface"><?php esc_html_e( 'External interface', 'fortis-toolbox' ); ?></label>
-                <select id="fortis_vip_interface" name="fortis_vip_interface">
-                    <option value="wan">wan</option>
-                    <option value="wan2">wan2</option>
-                </select>
-            </div>
-            <div class="kb-fortis-field">
-                <label for="fortis_vip_external"><?php esc_html_e( 'External IP', 'fortis-toolbox' ); ?></label>
-                <input type="text" id="fortis_vip_external" name="fortis_vip_external" value="203.0.113.10" />
-            </div>
-            <div class="kb-fortis-field">
-                <label for="fortis_vip_mapped"><?php esc_html_e( 'Mapped IP', 'fortis-toolbox' ); ?></label>
-                <input type="text" id="fortis_vip_mapped" name="fortis_vip_mapped" value="192.168.1.10" />
-            </div>
-            <div class="kb-fortis-field">
-                <label for="fortis_vip_port_forward"><?php esc_html_e( 'Port forwarding', 'fortis-toolbox' ); ?></label>
-                <select id="fortis_vip_port_forward" name="fortis_vip_port_forward">
-                    <option value="disable"><?php esc_html_e( 'Disabled', 'fortis-toolbox' ); ?></option>
-                    <option value="http">HTTP (80)</option>
-                    <option value="https">HTTPS (443)</option>
-                    <option value="custom"><?php esc_html_e( 'Custom', 'fortis-toolbox' ); ?></option>
-                </select>
-            </div>
-            <div class="kb-fortis-field">
-                <label for="fortis_vip_internal_port"><?php esc_html_e( 'Mapped port (when custom)', 'fortis-toolbox' ); ?></label>
-                <input type="number" id="fortis_vip_internal_port" name="fortis_vip_internal_port" value="8443" />
-            </div>
+        <div class="kb-fortis-table-wrapper">
+            <table class="kb-fortis-table">
+                <thead>
+                    <tr>
+                        <th><?php esc_html_e( 'Sel', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'Name', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'Interface', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'External IP', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'In Port', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'Mapped IP', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'Port', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'Protocol', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'OK?', 'fortis-toolbox' ); ?></th>
+                        <th><?php esc_html_e( 'Actions', 'fortis-toolbox' ); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" checked aria-label="Select VIP" /></td>
+                        <td><input type="text" value="VIP1" /></td>
+                        <td>
+                            <select>
+                                <option>wan</option>
+                                <option>wan2</option>
+                            </select>
+                        </td>
+                        <td><input type="text" value="203.0.113.50" /></td>
+                        <td><input type="number" value="" placeholder="" /></td>
+                        <td><input type="text" value="192.168.1.50" /></td>
+                        <td><input type="number" value="443" /></td>
+                        <td>
+                            <select>
+                                <option>tcp</option>
+                                <option>udp</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label class="kb-fortis-switch">
+                                <input type="checkbox" checked aria-label="Row OK" />
+                                <span class="screen-reader-text"><?php esc_html_e( 'Mark row as OK', 'fortis-toolbox' ); ?></span>
+                            </label>
+                        </td>
+                        <td>
+                            <div class="kb-fortis-table-actions">
+                                <button type="button" class="kb-fortis-button-secondary" title="Add">+</button>
+                                <button type="button" class="kb-fortis-button-secondary" title="Duplicate">
+                                    <?php esc_html_e( '⧉', 'fortis-toolbox' ); ?>
+                                </button>
+                                <button type="button" class="kb-fortis-button-secondary" title="Delete">×</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="kb-fortis-inline kb-fortis-actions">
+            <button type="button" class="kb-fortis-button-secondary"><?php esc_html_e( 'Delete', 'fortis-toolbox' ); ?></button>
+            <button type="button" class="kb-fortis-button-secondary"><?php esc_html_e( 'Delete All', 'fortis-toolbox' ); ?></button>
+            <button type="button" class="kb-fortis-button-secondary"><?php esc_html_e( 'Import', 'fortis-toolbox' ); ?></button>
+            <button type="button" class="kb-fortis-button-secondary"><?php esc_html_e( 'Export', 'fortis-toolbox' ); ?></button>
+            <label class="kb-fortis-chip">
+                <input type="checkbox" checked />
+                <span><?php esc_html_e( 'Create VIP Group', 'fortis-toolbox' ); ?></span>
+            </label>
         </div>
     </div>
 </div>
