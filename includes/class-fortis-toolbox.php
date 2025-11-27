@@ -24,61 +24,33 @@ class Fortis_Toolbox_Plugin {
      * @var array
      */
     private $sections = array(
-        'general_settings' => array(
-            'title'       => 'General settings',
-            'description' => 'Core device identity, hostname, and model selection.',
+        'new_forti'   => array(
+            'title'       => 'New Forti',
+            'description' => 'Baseline device identity and onboarding details.',
         ),
-        'local_interface'  => array(
-            'title'       => 'Local interface',
-            'description' => 'LAN interface addressing and DHCP scope.',
+        'virtual_ip'  => array(
+            'title'       => 'Virtual IP',
+            'description' => 'External VIP definitions and mapped addresses.',
         ),
-        'wan_interfaces'   => array(
-            'title'       => 'WAN interfaces',
-            'description' => 'WAN links, modes, and credentials.',
-        ),
-        'sd_wan'           => array(
-            'title'       => 'SD-WAN',
-            'description' => 'SD-WAN members and performance rules.',
-        ),
-        'address'          => array(
+        'address'     => array(
             'title'       => 'Address',
-            'description' => 'Address objects and CIDR definitions.',
+            'description' => 'Address objects, CIDR ranges, and labels.',
         ),
-        'address_group'    => array(
-            'title'       => 'Address group',
-            'description' => 'Grouping of address objects per usage.',
+        'security'    => array(
+            'title'       => 'Security',
+            'description' => 'Firewall posture, profiles, and access safeguards.',
         ),
-        'logs'             => array(
-            'title'       => 'Logs',
-            'description' => 'Log settings, forwarding, and retention.',
+        'alerts'      => array(
+            'title'       => 'Alerts',
+            'description' => 'Notification channels, recipients, and thresholds.',
         ),
-        'feature_vis'      => array(
-            'title'       => 'Feature visibility',
-            'description' => 'Feature toggles and visibility controls.',
+        'import'      => array(
+            'title'       => 'Import',
+            'description' => 'Upload or paste existing configuration snippets.',
         ),
-        'admin'            => array(
-            'title'       => 'Admin',
-            'description' => 'Administrators, profiles, and MFA.',
-        ),
-        'daily_backup'     => array(
-            'title'       => 'Daily backup',
-            'description' => 'Backup destinations and scheduling.',
-        ),
-        'vpn_settings'     => array(
-            'title'       => 'VPN settings',
-            'description' => 'VPN portals, subnets, and portal access.',
-        ),
-        'firewall_policy'  => array(
-            'title'       => 'Firewall policy',
-            'description' => 'Traffic policies, sources, destinations, and services.',
-        ),
-        'services_color'   => array(
-            'title'       => 'Services color',
-            'description' => 'Service objects with color coding.',
-        ),
-        'ldap'             => array(
-            'title'       => 'LDAP',
-            'description' => 'LDAP servers, bind credentials, and test hooks.',
+        'settings'    => array(
+            'title'       => 'Settings',
+            'description' => 'Global toolbox preferences and defaults.',
         ),
     );
 
@@ -296,20 +268,13 @@ class Fortis_Toolbox_Plugin {
      */
     public function get_cli_blocks() {
         return array(
-            'general_settings' => 'General Settings',
-            'local_interface'  => 'Local interface',
-            'wan_interfaces'   => 'Wan Interfaces',
-            'sd_wan'           => 'sd-wan',
-            'address'          => 'Address',
-            'address_group'    => 'Address Group',
-            'logs'             => 'Logs',
-            'feature_vis'      => 'Feature Visibility',
-            'admin'            => 'admin',
-            'daily_backup'     => 'Daily Backup',
-            'vpn_settings'     => 'VPN Settings',
-            'firewall_policy'  => 'Firewall policy',
-            'services_color'   => 'Services Color',
-            'ldap'             => 'LDAP',
+            'new_forti'  => 'New Forti',
+            'virtual_ip' => 'Virtual IP',
+            'address'    => 'Address',
+            'security'   => 'Security',
+            'alerts'     => 'Alerts',
+            'import'     => 'Import',
+            'settings'   => 'Settings',
         );
     }
 
