@@ -1,0 +1,156 @@
+.kb-fortis-wrapper {
+    max-width: 1100px;
+    margin-left: 0;
+    margin-right: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    direction: ltr;
+    text-align: left;
+}
+
+.kb-fortis-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    margin-bottom: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.kb-fortis-card h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.kb-fortis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px 20px;
+}
+
+.kb-fortis-field label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.kb-fortis-field input[type="text"],
+.kb-fortis-field input[type="number"],
+.kb-fortis-field select {
+    width: 100%;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    background: #f9fafb;
+}
+
+.kb-fortis-field input:focus,
+.kb-fortis-field select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    background: #ffffff;
+}
+
+.kb-fortis-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    font-size: 0.9rem;
+}
+
+.kb-fortis-checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.kb-fortis-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.kb-fortis-switch input {
+    transform: scale(1.1);
+}
+
+.kb-fortis-actions {
+    margin-top: 12px;
+}
+
+.kb-fortis-button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.kb-fortis-button-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+.kb-fortis-button-secondary {
+    border-radius: 999px;
+    border: 1px solid #4b5563;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    background: #111827;
+    color: #e5e7eb;
+    cursor: pointer;
+}
+
+.kb-fortis-button-secondary:hover {
+    background: #1f2937;
+}
+
+.kb-fortis-inline {
+    display: flex;
+    gap: 8px;
+}
+
+.kb-fortis-row-gap {
+    margin-bottom: 10px;
+}
+
+.kb-fortis-cli-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+    background: #020617;
+    color: #e5e7eb;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.85rem;
+    padding: 12px 14px;
+    resize: none;
+    min-height: 140px;
+}
+
+.kb-fortis-cli-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.kb-fortis-cli-header h2 {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
