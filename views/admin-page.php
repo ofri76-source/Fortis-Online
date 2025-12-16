@@ -10,7 +10,7 @@
 
     <p><?php esc_html_e( 'Basic skeleton – we will expand the form fields and logic step by step.', 'fortis-toolbox' ); ?></p>
 
-    <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+    <form id="customer-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
         <input type="hidden" name="fortis_source" value="admin" />
         <?php wp_nonce_field( 'fortis_toolbox_generate', 'fortis_toolbox_nonce' ); ?>
         <input type="hidden" name="action" value="fortis_toolbox_generate" />
@@ -40,6 +40,43 @@
                             <option value="FG-100F">FG-100F</option>
                         </select>
                         <p class="description"><?php esc_html_e( 'Initial static model list – to be extended from the Fortis toolbox data.', 'fortis-toolbox' ); ?></p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">
+                        <label for="customer-tenant-domain"><?php esc_html_e( 'Tenant Domain', 'fortis-toolbox' ); ?></label>
+                    </th>
+                    <td>
+                        <input name="customer-tenant-domain" id="customer-tenant-domain" type="text" class="regular-text" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">
+                        <label for="customer-client-id"><?php esc_html_e( 'Client ID', 'fortis-toolbox' ); ?></label>
+                    </th>
+                    <td>
+                        <input name="customer-client-id" id="customer-client-id" type="text" class="regular-text" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">&nbsp;</th>
+                    <td>
+                        <div id="additional-tenants"></div>
+
+                        <div class="form-group">
+                            <button type="button" id="add-tenant-row" class="m365-btn m365-btn-small">
+                                הוסף טננט נוסף
+                            </button>
+                        </div>
+
+                        <input type="hidden"
+                               id="customer-tenants-json"
+                               name="tenants"
+                               value="[]">
+                        <!-- KBBM ADMIN CUSTOMER FORM SIGNATURE: 2025-12-16 -->
                     </td>
                 </tr>
 
