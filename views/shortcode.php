@@ -29,7 +29,29 @@
                         <option value="FG-100F">Fortigate 100F</option>
                     </select>
                 </div>
+                <div class="kb-fortis-field">
+                    <label for="fortis_tenant_domain"><?php esc_html_e( 'Tenant Domain', 'fortis-toolbox' ); ?></label>
+                    <input type="text" id="fortis_tenant_domain" name="fortis_tenant_domain" value="" />
+                </div>
+                <div class="kb-fortis-field">
+                    <label for="fortis_client_id"><?php esc_html_e( 'Client ID', 'fortis-toolbox' ); ?></label>
+                    <input type="text" id="fortis_client_id" name="fortis_client_id" value="" />
+                </div>
             </div>
+
+            <div id="additional-tenants" data-tenant-signature="fortis-shortcode-tenants-ui-v1"></div>
+
+            <div class="form-group">
+                <button type="button" id="add-tenant-row" class="m365-btn m365-btn-small">
+                    הוסף טננט נוסף
+                </button>
+            </div>
+
+            <input type="hidden"
+                   id="customer-tenants-json"
+                   name="tenants"
+                   value="[]">
+            <!-- Fortis tenants UI signature: views/shortcode.php -->
         </div>
 
         <div class="kb-fortis-card">
