@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div id="additional-tenants"></div>
+            <div id="additional-tenants" data-tenant-signature="fortis-shortcode-tenants-ui-v1"></div>
 
             <div class="form-group">
                 <button type="button" id="add-tenant-row" class="m365-btn m365-btn-small">
@@ -51,6 +51,7 @@
                    id="customer-tenants-json"
                    name="tenants"
                    value="[]">
+            <!-- Fortis tenants UI signature: views/shortcode.php -->
         </div>
 
         <div class="kb-fortis-card">
